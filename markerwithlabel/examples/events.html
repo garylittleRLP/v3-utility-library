@@ -14,10 +14,15 @@
      width: 40px;
      border: 2px solid black;
      white-space: nowrap;
+	 -webkit-user-select: none;
+	 -khtml-user-select: none;
+	 -moz-user-select: none;
+	 -o-user-select: none;
+	 user-select: none;
    }
  </style>
- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
- <script type="text/javascript" src="../src/markerwithlabel.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+ <script type="text/javascript" src="../src/markerwithlabel.js?r=667edfsdsdsdsdddd"></script>
  <script type="text/javascript">
    function initMap() {
      var latLng = new google.maps.LatLng(49.47805, -123.84716);
@@ -32,7 +37,9 @@
      var marker = new MarkerWithLabel({
        position: homeLatLng,
        draggable: true,
-       raiseOnDrag: true,
+       clickable: true,
+       crossOnDrag: true,
+       crossImage: "http://maps.gstatic.com/intl/en_us/mapfiles/drag_cross_67_16.png",
        map: map,
        labelContent: "$425K",
        labelAnchor: new google.maps.Point(22, 0),
@@ -42,17 +49,22 @@
      var iw = new google.maps.InfoWindow({
        content: "Home For Sale"
      });
-     google.maps.event.addListener(marker, "click", function (e) { iw.open(map, this); });
+     google.maps.event.addListener(marker, "click", function (mEvent) { iw.open(map, this); });
      
-     google.maps.event.addListener(marker, "click", function (e) { log("Click"); });
-     google.maps.event.addListener(marker, "dblclick", function (e) { log("Double Click"); });
-     google.maps.event.addListener(marker, "mouseover", function (e) { log("Mouse Over"); });
-     google.maps.event.addListener(marker, "mouseout", function (e) { log("Mouse Out"); });
-     google.maps.event.addListener(marker, "mouseup", function (e) { log("Mouse Up"); });
-     google.maps.event.addListener(marker, "mousedown", function (e) { log("Mouse Down"); });
-     google.maps.event.addListener(marker, "dragstart", function (mEvent) { log("Drag Start: " + mEvent.latLng.toString()); });
-     google.maps.event.addListener(marker, "drag", function (mEvent) { log("Drag: " + mEvent.latLng.toString()); });
-     google.maps.event.addListener(marker, "dragend", function (mEvent) { log("Drag End: " + mEvent.latLng.toString()); });
+     google.maps.event.addListener(marker, "click", function (mEvent) { log("Marker - Click"); });
+     google.maps.event.addListener(marker, "dblclick", function (mEvent) { log("Marker - Double Click"); });
+     google.maps.event.addListener(marker, "mouseover", function (mEvent) { log("Marker - Mouse Over"); });
+     google.maps.event.addListener(marker, "mouseout", function (mEvent) { log("Marker - Mouse Out"); });
+     google.maps.event.addListener(marker, "mouseup", function (mEvent) { log("Marker - Mouse Up"); });
+     google.maps.event.addListener(marker, "mousedown", function (mEvent) { log("Marker - Mouse Down"); });
+     google.maps.event.addListener(marker, "dragstart", function (mEvent) { log("Marker - Drag Start: " + mEvent.latLng.toString()); });
+     google.maps.event.addListener(marker, "drag", function (mEvent) { log("Marker - Drag: " + mEvent.latLng.toString()); });
+     google.maps.event.addListener(marker, "dragend", function (mEvent) { log("Marker - Drag End: " + mEvent.latLng.toString()); });
+     
+     google.maps.event.addListener(map, "click", function (event) { log("Map - Click"); });
+     google.maps.event.addListener(map, "dblclick", function (event) { log("Map - Double Click"); });
+     google.maps.event.addListener(map, "mousedown", function (event) { log("Map - Mouse Down"); });
+     google.maps.event.addListener(map, "mouseup", function (event) { log("Map - Mouse Up"); });
    }
    
    function log(h) {
