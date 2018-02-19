@@ -16,8 +16,8 @@
      white-space: nowrap;
    }
  </style>
- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
- <script type="text/javascript" src="../src/markerwithlabel.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+ <script type="text/javascript" src="../src/markerwithlabel.js?klkkjj"></script>
  <script type="text/javascript">
    function initMap() {
      var latLng = new google.maps.LatLng(49.47805, -123.84716);
@@ -32,23 +32,34 @@
      var marker1 = new MarkerWithLabel({
        position: homeLatLng,
        draggable: true,
-       raiseOnDrag: true,
+       crossOnDrag: true,
+       crossImage: "http://maps.gstatic.com/intl/en_us/mapfiles/drag_cross_67_16.png",
        map: map,
+       clickable: true,
+       visible: true,
        labelContent: "$425K",
+       labelInBackground: false,
        labelAnchor: new google.maps.Point(22, 0),
        labelClass: "labels", // the CSS class for the label
-       labelStyle: {opacity: 0.75}
+       labelStyle: {opacity: 0.75},
+       labelVisible: true
      });
+
+	marker1.setMap(map);
 
      var marker2 = new MarkerWithLabel({
        position: new google.maps.LatLng(49.475, -123.84),
        draggable: true,
-       raiseOnDrag: true,
+       crossOnDrag: true,
        map: map,
+       clickable: true,
+       visible: true,
        labelContent: "$395K",
+       labelInBackground: false,
        labelAnchor: new google.maps.Point(22, 0),
        labelClass: "labels", // the CSS class for the label
-       labelStyle: {opacity: 1.0}
+       labelStyle: {opacity: 1.0},
+       labelVisible: true
      });
 
      var iw1 = new google.maps.InfoWindow({
