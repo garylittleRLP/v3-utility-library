@@ -6,7 +6,7 @@
  <style type="text/css">
    .labels {
      color: white;
-     background-color: red;
+     background-color: blue;
      font-family: "Lucida Grande", "Arial", sans-serif;
      font-size: 10px;
      text-align: center;
@@ -14,7 +14,7 @@
      white-space: nowrap;
    }
  </style>
- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
  <script type="text/javascript" src="../src/markerwithlabel.js"></script>
  <script type="text/javascript">
    function initMap() {
@@ -31,9 +31,10 @@
        position: homeLatLng,
        map: map,
        draggable: true,
-       raiseOnDrag: true,
+       crossOnDrag: true,
+       crossImage: "http://maps.gstatic.com/intl/en_us/mapfiles/drag_cross_67_16.png",
        labelContent: "A",
-       labelAnchor: new google.maps.Point(3, 30),
+       labelAnchor: new google.maps.Point(5, 34),
        labelClass: "labels", // the CSS class for the label
        labelInBackground: false
      });
